@@ -10,7 +10,7 @@ body{
 }
 .main{
 	width: 500px;
-	height: 500px;
+	height: 550px;
 	background: red;
 	overflow: hidden;
 	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
@@ -23,29 +23,54 @@ body{
 .signup{
 	position: relative;
 	width:100%;
-	height: 100%;
+	height: 115%;
 }
 label{
 	color: #fff;
-	font-size: 2.3em;
+	font-size: 1.9em;
 	justify-content: center;
 	display: flex;
-	margin: 60px;
+	margin: 18px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+p{
+	color: #fff;
+	font-size: 1em;
+	justify-content: center;
+	display: flex;
+	margin: 1px;
 	font-weight: bold;
 	cursor: pointer;
 	transition: .5s ease-in-out;
 }
 input{
-	width: 60%;
+	width: 50%;
 	height: 20px;
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
-	margin: 20px auto;
+	margin: 18px auto;
 	padding: 10px;
 	border: none;
 	outline: none;
 	border-radius: 5px;
+}
+select{
+	width: 50%;
+	height: 20px;
+	justify-content: center;
+	display: flex;
+	margin: 18px auto;
+	/*padding: 10px;*/
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	
+}
+option{
+	color: grey;
 }
 button{
 	width: 60%;
