@@ -14,7 +14,7 @@ layout: nav_ml
 			<div class="signup">
 				<form>
 					<label for="chk" aria-hidden="true">Titanic Survial predictor</label>
-					<p id="result" for="chk" aria-hidden="true">h</p>
+					<p id="result" for="chk" aria-hidden="true"></p>
 					<input id ="Name"  placeholder="Name" required="">
 					<select id="class" required>
 					    <option disabled selected>Passenger class</option>
