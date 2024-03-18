@@ -18,11 +18,15 @@ layout: nav_ml
                     <input id="Name" placeholder="Name" required="">
                     <select id="class" required>
                         <option disabled selected>Passenger class</option>
-                        <option value="1st">1st</option>
-                        <option value="2nd">2nd</option>
-                        <option value="3rd">3rd</option>
+                        <option value="1">1st</option>
+                        <option value="2">2nd</option>
+                        <option value="3">3rd</option>
                     </select>
-                    <input id="sex" placeholder="Sex">
+                    <select id="sex">
+                        <option disabled selected>sex</option>
+                        <option value="Male">male</option>
+                        <option value="Female">female</option>
+                    </select>
                     <input id="age" placeholder="Age">
                     <input id="price" placeholder="Ticket Price">
                     <select id="embark">
@@ -50,7 +54,6 @@ layout: nav_ml
                 </form>
             </div>
     </div>
-
     <script>
         function mltitanic() {
             var dom = document.getElementById('result');
@@ -63,10 +66,9 @@ layout: nav_ml
             var sibsp = document.getElementById('sibsp').value;
             var parch = document.getElementById('parch').value;
             var alone = document.getElementById('alone').value;
-
             var passenger = {
-                name: name,
                 pclass: pclass,
+                name: name,
                 sex: sex,
                 age: age,
                 sibsp: sibsp,
@@ -75,19 +77,16 @@ layout: nav_ml
                 embarked: embarked,
                 alone: alone
             };
-
             console.log(passenger);
-            var url = ''; // Specify your URL
+            var url = 'http://172.24.186.62:8086/api/titanic/predict' // Specify your URL
             var json = JSON.stringify(passenger);
             console.log(json);
-
             const authOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: json,
                 credentials: 'include'
             };
-
             fetch(url, authOptions)
                 .then(response => {
                     if (!response.ok) {
@@ -97,6 +96,7 @@ layout: nav_ml
                 })
                 .then(data => {
                     console.log('success', data);
+                    dom.innerText = "Death Probability:" +data["Death probability"]
                     // Handle successful response here
                 })
                 .catch(error => {
