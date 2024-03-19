@@ -48,9 +48,26 @@ layout: nav_ml
             <div class="login">
                 <form>
                     <label for="chk" aria-hidden="true">Extra</label>
-                    <input type="email" name="email" placeholder="Email" required="">
-                    <input type="password" name="pswd" placeholder="Password" required="">
-                    <button>Login</button>
+                    <p id="resultx" aria-hidden="true"></p>
+                    <select id="Time of Day">
+                        <option disabled selected>Time of Day</option>
+                        <option value="morning">Morning</option>
+                        <option value="afternoon">Afternoon</option>
+                    </select>
+                    <select id="Day of week">
+                        <option disabled selected>Day of week</option>
+                        <option value="weekend">weekend</option>
+                        <option value="weekday">weekday</option>
+                    </select>
+                    <select id="Occupation">
+                        <option disabled selected>Occupation</option>
+                        <option value="student">Student</option>
+                        <option value="employee">Employee</option>
+                        <option value="self-employed">self-employed</option>
+                        <option value="house wife">house wife</option>
+                    </select>
+                    <input id="time" type="text" placeholder="time" onfocus="(this.type='time')">
+                    <button type="button" onclick="extra()">Predict</button>
                 </form>
             </div>
     </div>
@@ -97,6 +114,46 @@ layout: nav_ml
                 .then(data => {
                     console.log('success', data);
                     dom.innerText = "Death Probability:" +data["Death probability"]
+                    // Handle successful response here
+                })
+                .catch(error => {
+                    console.error('error', error);
+                    // Handle error
+                    dom.innerText = "Error occurred";
+                });
+        }
+        function extra() {
+            var dom = document.getElementById('resultx');
+            var TOD = document.getElementById('Time of Day').value;
+            var DOW = document.getElementById('Day of week').value;
+            var Occupation = document.getElementById('Occupation').value;
+            var time = document.getElementById('time');
+            var enteredTime = time.value
+            var payload = {
+                tod: TOD,
+                dow: DOW,
+                Occupation: Occupation,
+                time: enteredTime,
+            };
+            console.log(payload);
+            var url = '' // Specify your URL
+            var json = JSON.stringify(payload);
+            console.log(json);
+            const authOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: json,
+                credentials: 'include'
+            };
+            fetch(url, authOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('success', data);
                     // Handle successful response here
                 })
                 .catch(error => {
