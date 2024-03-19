@@ -78,7 +78,7 @@ layout: nav_ml
                 alone: alone
             };
             console.log(passenger);
-            var url = 'http://172.24.186.62:8086/api/titanic/predict' // Specify your URL
+            var url = 'http://127.0.0.1:8086/api/titanic/predict' // Specify your URL
             var json = JSON.stringify(passenger);
             console.log(json);
             const authOptions = {
