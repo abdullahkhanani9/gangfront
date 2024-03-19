@@ -47,7 +47,7 @@ layout: nav_ml
             </div>
             <div class="login">
                 <form>
-                    <label for="chk" aria-hidden="true">Login</label>
+                    <label for="chk" aria-hidden="true">Extra</label>
                     <input type="email" name="email" placeholder="Email" required="">
                     <input type="password" name="pswd" placeholder="Password" required="">
                     <button>Login</button>
