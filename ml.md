@@ -2,7 +2,7 @@
 permalink: /ml
 layout: nav_ml
 ---
-<html>
+<html lang="en">
 <head>
     <title>Slide Navbar</title>
     <link rel="stylesheet" type="text/css" href="ml-styles.css">
@@ -12,7 +12,7 @@ layout: nav_ml
     <div class="main">        
         <input type="checkbox" id="chk" aria-hidden="true">
             <div class="signup">
-                <form>
+                <form id="titanic-form">
                     <label for="chk" aria-hidden="true">Titanic Survival Predictor</label>
                     <p id="result" aria-hidden="true"></p>
                     <input id="Name" placeholder="Name" required="">
@@ -23,9 +23,9 @@ layout: nav_ml
                         <option value="3">3rd</option>
                     </select>
                     <select id="sex">
-                        <option disabled selected>sex</option>
-                        <option value="Male">male</option>
-                        <option value="Female">female</option>
+                        <option disabled selected>Sex</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
                     </select>
                     <input id="age" placeholder="Age">
                     <input id="price" placeholder="Ticket Price">
@@ -39,34 +39,27 @@ layout: nav_ml
                     <input id="parch" placeholder="# of parents/children aboard">
                     <select id="alone">
                         <option disabled selected>Are you traveling alone?</option>
-                        <option value="True">True</option>
-                        <option value="False">False</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
                     </select>
                     <button type="button" onclick="mltitanic()">Predict</button>
                 </form>
             </div>
             <div class="login">
-                <form>
+                <form id="extra-form">
                     <label for="chk" aria-hidden="true">Extra</label>
                     <p id="resultx" aria-hidden="true"></p>
-                    <select id="Time of Day">
+                    <select id="TimeOfDay">
                         <option disabled selected>Time of Day</option>
                         <option value="morning">Morning</option>
                         <option value="afternoon">Afternoon</option>
                     </select>
-                    <select id="Day of week">
+                    <select id="DayOfWeek">
                         <option disabled selected>Day of week</option>
-                        <option value="weekend">weekend</option>
-                        <option value="weekday">weekday</option>
+                        <option value="weekend">Weekend</option>
+                        <option value="weekday">Weekday</option>
                     </select>
-                    <select id="Occupation">
-                        <option disabled selected>Occupation</option>
-                        <option value="student">Student</option>
-                        <option value="employee">Employee</option>
-                        <option value="self-employed">self-employed</option>
-                        <option value="house wife">house wife</option>
-                    </select>
-                    <input id="time" type="text" placeholder="time" onfocus="(this.type='time')">
+                    <input id="time" type="text" placeholder="Time" onfocus="(this.type='time')">
                     <button type="button" onclick="extra()">Predict</button>
                 </form>
             </div>
@@ -84,25 +77,22 @@ layout: nav_ml
             var parch = document.getElementById('parch').value;
             var alone = document.getElementById('alone').value;
             var passenger = {
-                pclass: pclass,
                 name: name,
+                pclass: pclass,
                 sex: sex,
                 age: age,
-                sibsp: sibsp,
-                parch: parch,
                 fare: fare,
                 embarked: embarked,
+                sibsp: sibsp,
+                parch: parch,
                 alone: alone
             };
-            console.log(passenger);
-            var url = 'http://127.0.0.1:8086/api/titanic/predict' // Specify your URL
+            var url = 'http://127.0.0.1:8086/api/titanic/predict';
             var json = JSON.stringify(passenger);
-            console.log(json);
             const authOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: json,
-                credentials: 'include'
+                body: json
             };
             fetch(url, authOptions)
                 .then(response => {
@@ -113,37 +103,29 @@ layout: nav_ml
                 })
                 .then(data => {
                     console.log('success', data);
-                    dom.innerText = "Death Probability:" +data["Death probability"]
-                    // Handle successful response here
+                    dom.innerText = "Survival Probability: " + data["Survival probability"];
                 })
                 .catch(error => {
                     console.error('error', error);
-                    // Handle error
                     dom.innerText = "Error occurred";
                 });
         }
         function extra() {
             var dom = document.getElementById('resultx');
-            var TOD = document.getElementById('Time of Day').value;
-            var DOW = document.getElementById('Day of week').value;
-            var Occupation = document.getElementById('Occupation').value;
-            var time = document.getElementById('time');
-            var enteredTime = time.value
+            var TimeOfDay = document.getElementById('TimeOfDay').value;
+            var DayOfWeek = document.getElementById('DayOfWeek').value;
+            var time = document.getElementById('time').value;
             var payload = {
-                tod: TOD,
-                dow: DOW,
-                Occupation: Occupation,
-                time: enteredTime,
+                TimeOfDay: TimeOfDay,
+                DayOfWeek: DayOfWeek,
+                time: time
             };
-            console.log(payload);
-            var url = '' // Specify your URL
+            var url = 'http://127.0.0.1:8086/api/titanic/food';
             var json = JSON.stringify(payload);
-            console.log(json);
             const authOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: json,
-                credentials: 'include'
+                body: json
             };
             fetch(url, authOptions)
                 .then(response => {
@@ -158,7 +140,6 @@ layout: nav_ml
                 })
                 .catch(error => {
                     console.error('error', error);
-                    // Handle error
                     dom.innerText = "Error occurred";
                 });
         }
