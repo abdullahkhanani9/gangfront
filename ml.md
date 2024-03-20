@@ -87,7 +87,7 @@ layout: nav_ml
                 embarked: embarked,
                 alone: alone
             };
-            var url = 'http://127.0.0.1:8086/api/titanic/predict' // Specify your URL
+            var url = 'http://127.0.0.1:8086/api/titanic/predict'; // Specify your URL
             var json = JSON.stringify(passenger);
             const authOptions = {
                 method: 'POST',
@@ -104,8 +104,10 @@ layout: nav_ml
                 })
                 .then(data => {
                     console.log('success', data);
-                    dom.innerText = "Death Probability:" +data["Death probability"]
-                    // Handle successful response here
+                    dom.innerText = "Death Probability:" + data["Death probability"];
+
+                    // Display in alert
+                    alert("Death Probability: " + data["Death probability"]);
                 })
                 .catch(error => {
                     console.error('error', error);
@@ -124,7 +126,7 @@ layout: nav_ml
                 dow: DOW,
                 time: enteredTime,
             };
-            var url = 'http://127.0.0.1:8086/api/titanic/food' // Specify your URL
+            var url = 'http://127.0.0.1:8086/api/titanic/food'; // Specify your URL
             var json = JSON.stringify(payload);
             const authOptions = {
                 method: 'POST',
