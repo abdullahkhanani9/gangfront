@@ -51,13 +51,13 @@ layout: nav_ml
                     <p id="resultx" aria-hidden="true"></p>
                     <select id="TimeOfDay">
                         <option disabled selected>Time of Day</option>
-                        <option value="morning">Morning</option>
-                        <option value="afternoon">Afternoon</option>
+                        <option value="Morning">Morning</option>
+                        <option value="Afternoon">Afternoon</option>
                     </select>
                     <select id="DayOfWeek">
                         <option disabled selected>Day of Week</option>
-                        <option value="weekend">Weekend</option>
-                        <option value="weekday">Weekday</option>
+                        <option value="Weekend">Weekend</option>
+                        <option value="Weekday">Weekday</option>
                     </select>
                     <input id="time" type="text" placeholder="Time" onfocus="(this.type='time')">
                     <button type="button" onclick="extra()">Predict</button>
@@ -120,14 +120,15 @@ layout: nav_ml
             var TOD = document.getElementById('TimeOfDay').value;
             var DOW = document.getElementById('DayOfWeek').value;
             var time = document.getElementById('time');
-            var enteredTime = time.value
+            var enteredTime = time.value + ":00"
             var payload = {
-                tod: TOD,
-                dow: DOW,
-                time: enteredTime,
+                Time: enteredTime,
+                DayPart: TOD,
+                DayType: DOW,
             };
-            var url = 'http://127.0.0.1:8086/api/titanic/food'; // Specify your URL
+            var url = 'http://127.0.0.1:8086/api/food/predict'
             var json = JSON.stringify(payload);
+            console.log(json)
             const authOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -143,6 +144,7 @@ layout: nav_ml
                 })
                 .then(data => {
                     console.log('success', data);
+                    dom.innerText = "Predicted item" + data["item"]
                     // Handle successful response here
                 })
                 .catch(error => {
