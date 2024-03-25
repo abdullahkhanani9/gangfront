@@ -105,7 +105,6 @@ layout: nav_ml
                 .then(data => {
                     console.log('success', data);
                     dom.innerText = "Death Probability:" + data["Death probability"];
-
                     // Display in alert
                     alert("Death Probability: " + data["Death probability"]);
                 })
@@ -144,9 +143,10 @@ layout: nav_ml
                 })
                 .then(data => {
                     console.log('success', data);
-                    dom.innerText = "Predicted item" + data["item"]
-                    // Handle successful response here
-                })
+                    dom.innerText = "Predicted Item: " + data["item"]
+                // Display in alert
+                    alert("Predicted Item: " + data["item"]);
+                })                
                 .catch(error => {
                     console.error('error', error);
                     // Handle error
