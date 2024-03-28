@@ -53,7 +53,7 @@ layout: nav_ml
                         <option disabled selected>Time of Day</option>
                         <option value="Morning">Morning</option>
                         <option value="Afternoon">Afternoon</option>
-                    </select>
+                    </select> </br>
                     <select id="DayOfWeek">
                         <option disabled selected>Day of Week</option>
                         <option value="Weekend">Weekend</option>
