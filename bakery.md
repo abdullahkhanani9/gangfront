@@ -26,7 +26,7 @@ layout: nav_ml
                         <option value="Weekday">Weekday</option>
                     </select>
                     <input id="time" type="text" placeholder="Time" onfocus="(this.type='time')">
-                <button class="form-btn sx log-in" type="button">Back</button>
+                <button class="form-btn sx log-in" type="button">Switch</button>
                 <button class="form-btn dx"  type="button"  onclick="extra()">Predict</button>
             </form>
             <form class="signIn">
