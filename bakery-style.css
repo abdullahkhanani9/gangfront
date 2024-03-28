@@ -88,6 +88,20 @@ button.form-btn {
   text-transform: uppercase;
   cursor: pointer;
 }
+select{
+	width: 75%;
+	height: 35px;
+	background: #87613d;
+	color: black;
+	justify-content: center;
+	display: flex;
+	margin: 18px auto;
+	/*padding: 10px;*/
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	
+}
 
 button.form-btn.sx {
   left: 0;
@@ -121,11 +135,11 @@ button.form-btn.dx {
 input {
   border: none;
   border-bottom: 1px solid #ffc185;
-  width: 85%;
+  width: 90%;
   font-family: 'Roboto';
   color: #ff7d00;
   text-align: center;
-  font-size: 21px;
+  font-size: 20px;
   font-weight:100;
   margin-bottom:25px;
 }

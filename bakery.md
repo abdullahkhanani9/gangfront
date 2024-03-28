@@ -13,11 +13,8 @@ layout: nav_ml
     <body>
         <div class="container">
             <form class="signUp">
-                <h3>Create Your Account</h3>
-                <p>Just enter your email address</br>
-        and your password for join.
+                <h3>Bakery Ml</h3>
                 <p id="resultx" aria-hidden="true"></p>
-                </p>
                     <select id="TimeOfDay">
                         <option disabled selected>Time of Day</option>
                         <option value="Morning">Morning</option>
@@ -29,27 +26,28 @@ layout: nav_ml
                         <option value="Weekday">Weekday</option>
                     </select>
                     <input id="time" type="text" placeholder="Time" onfocus="(this.type='time')">
-                <button class="form-btn sx log-in">Log In</button>
-                <button class="form-btn dx"  type="button"  onclick="extra()">Sign Up</button>
+                <button class="form-btn sx log-in" type="button">Back</button>
+                <button class="form-btn dx"  type="button"  onclick="extra()">Predict</button>
             </form>
             <form class="signIn">
                 <h3>
-                    WelcomeBack !
+                    No Coffee Ml 
                 </h3>
-                <label for="chk" aria-hidden="true">Food Predictor</label>
+                <p id="resultx1" aria-hidden="true"></p>
                     <p id="resultx" aria-hidden="true"></p>
-                    <select id="TimeOfDay">
+                    <select id="TimeOfDay1">
                         <option disabled selected>Time of Day</option>
                         <option value="Morning">Morning</option>
                         <option value="Afternoon">Afternoon</option>
-                    </select> </br>
-                    <select id="DayOfWeek">
+                    </select> 
+                    <select id="DayOfWeek1">
                         <option disabled selected>Day of Week</option>
                         <option value="Weekend">Weekend</option>
                         <option value="Weekday">Weekday</option>
                     </select>
+                    <input id="time1" type="text" placeholder="Time" onfocus="(this.type='time')">
                 <button class="form-btn sx back" type="button">Back</button>
-                <button class="form-btn dx" type="submit">Log In</button>
+                <button class="form-btn dx"  type="button"  onclick="extrax()">Predict</button>
             </form>
         </div>
     </body>
@@ -81,6 +79,45 @@ layout: nav_ml
                 DayType: DOW,
             };
             var url = 'http://127.0.0.1:8086/api/food/predict'
+            var json = JSON.stringify(payload);
+            console.log(json)
+            const authOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: json,
+                credentials: 'include'
+            };
+            fetch(url, authOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('success', data);
+                    dom.innerText = "Predicted Item: " + data["item"]
+                // Display in alert
+                    alert("Predicted Item: " + data["item"]);
+                })                
+                .catch(error => {
+                    console.error('error', error);
+                    // Handle error
+                    dom.innerText = "Error occurred";
+                });
+        }
+    function extrax() {
+            var dom = document.getElementById('resultx1');
+            var TOD = document.getElementById('TimeOfDay1').value;
+            var DOW = document.getElementById('DayOfWeek1').value;
+            var time = document.getElementById('time1');
+            var enteredTime = time.value + ":00"
+            var payload = {
+                Time: enteredTime,
+                DayPart: TOD,
+                DayType: DOW,
+            };
+            var url = 'http://127.0.0.1:8086/api/bakery/predict'
             var json = JSON.stringify(payload);
             console.log(json)
             const authOptions = {
