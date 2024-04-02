@@ -1,8 +1,8 @@
 title: Teacher 2.0
 description: "August 2023 to June 2024"
 owner_name: John Mortensen
-github_username: nighthawkcoders
-github_repo: "teacher_portfolio"
+github_username: tuckergol
+github_repo: "frontgang"
 baseurl: "/teacher_portfolio"
 future: true
 remote_theme: jekyll/minima
