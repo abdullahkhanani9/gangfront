@@ -1,7 +1,9 @@
 ---
 permalink: /stocks
+layout: nav_ml
 title: Display Stocks
 ---
+{% include nav_ml.html %}
 <html>
     <h3 id= "Balance"></h3>
     <a href="/teacher_portfolio/transactionlog">Transaction Log</a>

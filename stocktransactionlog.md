@@ -1,6 +1,10 @@
 ---
 permalink: /transactionlog
+layout: nav_ml
+
 ---
+{% include nav_ml.html %}
+
 <html>
     <a href="/teacher_portfolio/stocks">Back</a>
     <a href="/teacher_portfolio/portfolio">Portfolio</a>

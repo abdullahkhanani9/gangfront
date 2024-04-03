@@ -1,8 +1,9 @@
 ---
 permalink: /signin
 title: Sign In
+layout: nav_ml
 ---
-
+{% include nav_ml.html %}
 <html>
     <head>
     <style>
