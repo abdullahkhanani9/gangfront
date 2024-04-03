@@ -2,71 +2,25 @@
 permalink: /painter
 layout: nav_ml
 ---
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VividFusion</title>
-  <!-- Link to external CSS files -->
-  <link rel="stylesheet" href="style/font.css">
-  <link rel="stylesheet" href="style/index.css">
-  <link rel="stylesheet" href="style/navbar.css">
-  <link rel="stylesheet" href="style/painter.css">
+  <link rel="stylesheet" href="painter.css">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="navbar-brand">
-        <a href="index.html">VividFusion</a>
-    </div>
-    <div class="navbar-links" id="NavbarLink"> 
-        <a href="board.html">Posts</a>
-        <a href="editor.html">Image Editor</a>
-        <a href="Painter.html">Paint Editor</a>
-        <a href="login.html" id="SignupNavbar">Sign up</a>
-    </div>
-  </nav>
 
-  <div id="profileMenu">
-    <div id="profileMenuRoleBanner" class="creatorRole">Missing</div>
-    <img id="profileMenuPFP" src="assets/img/DefaultPFP.png">
-    <span id="profileMenuUsername">Debug</span>
-    <span id="profileMenuUserID">@default</span>
-    <span id="profileMenuName">John Doe</span>
-    <div id="profileMenuChangeMenu">
-        <span>Change Account Data</span>
-        <br>
-        <span style="font-size:small">Only completed fields are changed!</span>
-        <br>
-        <span style="font-size:x-small">Password Required!</span>
-        <br>
-        <input type="text" placeholder="Change Display Name" id="changeDisplayName">
-        <input type="text" placeholder="Change Name" id="changeName">
-        <input type="password" placeholder="Enter Old Password" id="changeOldPW">
-        <input type="password" placeholder="Enter New Password" id="changeNewPW">
-    </div>
-    <img id="changePreviewPFP" src="assets/img/DefaultPFP.png">
-    <button id="profileMenuLogout" class="profileMenuButton" onclick="logout()">Log Out</button>
-    <button id="profileMenuApplyChange" class="profileMenuButton" onclick="applyChanges()">Apply Changes</button>
-    <button id="changePFPButton" class="profileMenuButton" onclick="uploadPFPChange()">Change Profile Picture</button>
-    <input type="file" id="changeFile" style="display:none">
-</div>
+  <style>
+    html,body
+    {
+      height:100%;
+      width:100%;
+    }
+  </style>
   
   <!-- Drawing container -->
   <div id="drawingContainer">
-    <!-- Question container -->
-    <div id="questionContainer">
-      <!-- Question -->
-      <h2 id="question">What do you want to draw?</h2>
-      <!-- Drawing options -->
-      <input type="radio" id="cat" name="drawingChoice" value="Cat">
-      <label for="cat">Cat</label><br>
-      <input type="radio" id="cookie" name="drawingChoice" value="Cookie">
-      <label for="cookie">Cookie</label><br>
-      <input type="radio" id="house" name="drawingChoice" value="House">
-      <label for="house">House</label><br>
-    </div>
     <!-- Canvas -->
     <canvas id="drawingCanvas" width="800" height="600"></canvas>
     <!-- Color selectors -->
@@ -105,6 +59,5 @@ layout: nav_ml
   </div>
 <!-- js -->
   <script src="src/painter.js"> </script>
-  <script src="src/auth.js"></script>
 </body>
 </html>
