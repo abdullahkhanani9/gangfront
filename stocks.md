@@ -133,6 +133,7 @@ title: Display Stocks
                             })
                             .catch(error => {
                                 console.error('error', error);
+                                alert('your broke')
                             });
                     } else {
                         alert('Invalid quantity. The requested quantity exceeds the available quantity.');
