@@ -50,7 +50,7 @@ permalink: /transactionlog
     }
     document.addEventListener("DOMContentLoaded", function () {
         function fetchData() {
-            var url = 'http://localhost:8086/api/stocks/transaction/display'
+            var url = 'http://127.0.0.1:8008/api/stocks/transaction/display'
             const uid = localStorage.getItem("uid");
             var data = {
                 uid: uid

@@ -59,7 +59,7 @@ title: Display Stocks
                 // Function to make API call and update the table
                 function fetchData() {
                     // Replace 'your-api-endpoint' with the actual API endpoint
-                    fetch('http://localhost:8086/api/stocks/stock/display')
+                    fetch('http://127.0.0.1:8008/api/stocks/stock/display')
                         .then(response => response.json())
                         .then(data => {
                             updateTable(data);
@@ -101,7 +101,7 @@ title: Display Stocks
                 if (quantityToBuy !== null && !isNaN(quantityToBuy) && quantityToBuy > 0) {
                     if (quantityToBuy <= availableQuantity) {
                         alert(`Buying ${quantityToBuy} stocks of ${symbol}`);
-                        var url = 'http://localhost:8086/api/stocks/transaction'
+                        var url = 'http://127.0.0.1:8008/api/stocks/transaction'
                         const newQuantity = availableQuantity - quantityToBuy;
                         const uid = localStorage.getItem("uid");
                         var data = {
@@ -145,7 +145,7 @@ title: Display Stocks
                 const ownedQuantity = quantity; // Assuming quantity is the available quantity owned by the user
                 if (quantityToSell !== null && !isNaN(quantityToSell) && quantityToSell > 0 && quantityToSell <= ownedQuantity) {
                     alert(`Selling ${quantityToSell} stocks of ${symbol}`);
-                    var url = 'http://localhost:8086/api/stocks/sell';
+                    var url = 'http://127.0.0.1:8008/api/stocks/sell';
                     const uid = localStorage.getItem("uid");
                     var data = {
                         quantity: Number(quantityToSell),
@@ -192,7 +192,7 @@ title: Display Stocks
                         cache: 'no-cache',
                         credentials: 'include'
                     };
-                    var url = 'http://localhost:8086/api/stocks/stockmoney';
+                    var url = 'http://127.0.0.1:8008/api/stocks/stockmoney';
                     fetch(url, authOptions1)
                         .then(response => response.json())
                         .then(data => {
