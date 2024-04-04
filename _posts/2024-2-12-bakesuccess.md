@@ -53,4 +53,4 @@ permalink: /bakesuccess
 <h1 id = "header"></h1>
 <img src="{{site.baseurl}}/images/oven.png" class="shaking-element" alt="Shaking Oven">
 <img id = "image" src = "" class="hidden fadeIn">
-<script src="JS/success.js"></script>
+<script src="/frontgang/LMC/JS/success.js"></script>
