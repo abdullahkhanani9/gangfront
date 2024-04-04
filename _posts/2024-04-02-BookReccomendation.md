@@ -7,6 +7,7 @@ courses: {'compsci': {'week': 4}}
 type: hacks
 permalink: /bookreccom
 ---
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
