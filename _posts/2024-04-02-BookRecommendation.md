@@ -1,7 +1,7 @@
 ---
 comments: True
 layout: base
-title: Book Reccomendation 
+title: Book Recommendation 
 description: Gives users sugessted books to read
 courses: {'compsci': {'week': 4}}
 type: hacks
