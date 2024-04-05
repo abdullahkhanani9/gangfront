@@ -34,6 +34,15 @@ layout: default
             <p id="error-message" style="display: none; color: red;"></p>
             <button type="button" onclick="saveSettings()">Save Changes</button>
         </form>
+        <h2>Change Username</h2>
+        <form id="change-username-form">
+            <input type="text" id="current-username" class="input" placeholder="Current Username">
+            <input type="text" id="current-uid" class="input" placeholder="Current User ID">
+            <input type="password" id="current-password" class="input" placeholder="Current Password">
+            <input type="text" id="new-username" class="input" placeholder="New Username">
+            <p id="username-error-message" style="display: none; color: red;"></p>
+            <button type="button" onclick="changeUsername()">Change Username</button>
+        </form>
     </div>
     <script>
         // Function to save settings
@@ -41,18 +50,18 @@ layout: default
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
             const theme = document.getElementById("theme").value;
-            const uid = document.getElementById("uid").value; // Retrieve uid from input field
+            const uid = "root"; // Assign the correct uid value from the database
+            const name = "Admin"; // Assign the correct name value from the database
             // Save theme setting to localStorage
             localStorage.setItem('theme', theme);
             const data = {
                 uid: uid,
-                name: username,
+                name: name,
                 password: password,
                 theme: theme
             };
-            console.log('Data to be sent:', data); // Add this line to log the data to be sent
             fetch('http://127.0.0.1:8008/api/theme/save_settings', {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -102,6 +111,34 @@ layout: default
         if (savedTheme) {
             document.getElementById("theme").value = savedTheme;
             applyTheme(savedTheme);
+        }
+        // Function to change username
+        function changeUsername() {
+            const currentUid = document.getElementById("current-uid").value;
+            const newUsername = document.getElementById("new-username").value;
+            fetch('http://127.0.0.1:8008/api/theme/name', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    uid: currentUid,
+                    new_name: newUsername
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('User or theme does not exist.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert('Username changed successfully');
+                console.log(data);
+            })
+            .catch(error => {
+                document.getElementById("username-error-message").innerText = error.message;
+                document.getElementById("username-error-message").style.display = "block";
+                console.error('Error:', error);
+            });
         }
     </script>
 </body>
