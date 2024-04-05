@@ -1,12 +1,13 @@
 ---
 comments: True
 layout: base
-title: Book Reccomendation 
-description: Gives users sugessted books to read
+title: Book Recommendation 
+description: Gives users suggested books to read
 courses: {'compsci': {'week': 4}}
 type: hacks
 permalink: /bookreccom
 ---
+
 
 <html lang="en">
 <head>
@@ -57,46 +58,30 @@ permalink: /bookreccom
             alert("Please enter your favorite book.");
             return;
         }
-        const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(favoriteBookInput)}`;
+        const url = '/get_recommendations';
+        const data = { favorite_book: favoriteBookInput };
         const recommendationResults = document.getElementById("recommendationResults");
         recommendationResults.innerHTML = ''; // Clear previous results
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            const data = await response.json();
-            console.log('API Response:', data);
-            if (data && data.items && data.items.length > 0) {
-                const favoriteBook = data.items[0].volumeInfo; // Assume the first book in the list is the favorite
-                const recommendations = await fetchRecommendations(favoriteBook);
-                if (recommendations && recommendations.length > 0) {
-                    displayRecommendations(recommendations);
-                } else {
-                    recommendationResults.innerHTML = 'No recommendations found.';
-                }
+            const recommendations = await response.json();
+            if (recommendations && recommendations.length > 0) {
+                displayRecommendations(recommendations);
             } else {
-                recommendationResults.innerHTML = 'No book found.';
+                recommendationResults.innerHTML = 'No recommendations found.';
             }
         } catch (error) {
             console.error('Error fetching data:', error);
             recommendationResults.innerHTML = 'An error occurred while fetching data.';
-        }
-    }
-
-    async function fetchRecommendations(book) {
-        const url = `https://www.googleapis.com/books/v1/volumes?q=related:${book.title}`;
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            console.log('Recommendation Response:', data);
-            return data && data.items ? data.items.map(item => item.volumeInfo) : [];
-        } catch (error) {
-            console.error('Error fetching recommendations:', error);
-            return [];
         }
     }
 
@@ -106,12 +91,12 @@ permalink: /bookreccom
             const bookElement = document.createElement("div");
             bookElement.classList.add("book-card");
             bookElement.innerHTML = `
-                <h3>${escapeHTML(book.title)}</h3>
-                <img src="${book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail : 'No image available'}" alt="${escapeHTML(book.title)}">
-                <p>Author: ${book.authors ? book.authors.join(', ') : 'Unknown'}</p>
-                <p>Rating: ${book.averageRating ? book.averageRating : 'Not available'}</p>
-                <p>Plot: ${book.description ? book.description : 'Not available'}</p>
-                <a href="${book.infoLink}" target="_blank">More info</a>
+                <h3>${escapeHTML(book[1])}</h3>
+                <img src="${book[2] || 'No image available'}" alt="${escapeHTML(book[1])}">
+                <p>Author: ${book[3] || 'Unknown'}</p>
+                <p>Rating: ${book[4] || 'Not available'}</p>
+                <p>Plot: ${book[5] || 'Not available'}</p>
+                <a href="${book[6]}" target="_blank">More info</a>
             `;
             recommendationResults.appendChild(bookElement);
         });
