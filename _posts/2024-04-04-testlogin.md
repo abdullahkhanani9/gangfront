@@ -1,7 +1,8 @@
 ---
 permalink: /login
-title: Sign In
-layout: nav_ml
+title: Login
+layout: base
+description: This is our Login system.
 ---
 
 <html lang="en">
@@ -15,7 +16,7 @@ layout: nav_ml
             background-color: #222;
             margin: 0;
             padding: 0;
-            display: flex;
+            display: block;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -23,23 +24,26 @@ layout: nav_ml
         .container {
             background-color: #333;
             border-radius: 8px;
-            padding: 20px;
+            padding: 40px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 400px;
         }
         h1 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             color: #fff;
+            font-size: 24px;
         }
         label {
             display: block;
             margin-bottom: 10px;
             color: #fff;
+            font-size: 16px;
         }
         input[type="text"],
-        input[type="password"] {
-            width: 100%;
+        input[type="password"],
+        select {
+            width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #555;
@@ -47,22 +51,22 @@ layout: nav_ml
             box-sizing: border-box;
             background-color: #444;
             color: #fff;
+            font-size: 16px;
         }
         button {
-            width: 100%;
+            width: calc(100% - 20px);
             padding: 10px;
             background-color: #525252;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
         }
         button:hover {
             background-color: #454746;
         }
     </style>
-</head>
-<body>
     <div class="container">
         <h1>Login</h1>
         <form>
@@ -123,5 +127,3 @@ layout: nav_ml
             });
         }
     </script>
-</body>
-</html>

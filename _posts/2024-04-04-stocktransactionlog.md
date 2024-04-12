@@ -1,9 +1,9 @@
 ---
+title: Stocks Transaction Log
 permalink: /transactionlog
 layout: nav_ml
-
+description: Varun's CPT Feature aspect of logging stock transactions.
 ---
-{% include nav_ml.html %}
 
 <html>
     <a href="/teacher_portfolio/stocks">Back</a>

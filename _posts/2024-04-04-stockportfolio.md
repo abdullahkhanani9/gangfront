@@ -1,8 +1,9 @@
 ---
+title: Stocks Portfolio
 permalink: /portfolio
 layout: nav_ml
+description: Varun's CPT Feature aspect regarding stock portfolios.
 ---
-{% include nav_ml.html %}
 
 <html>
 <a href="/teacher_portfolio/stocks">Back</a>
@@ -13,7 +14,6 @@ layout: nav_ml
             background: #252525;
             color: #ffffff;
         }
-
         .lightmode {
             background: #ffffff;
             color: #000000;
