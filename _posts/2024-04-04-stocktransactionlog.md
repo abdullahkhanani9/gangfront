@@ -1,7 +1,7 @@
 ---
 title: Stocks Transaction Log
 permalink: /transactionlog
-layout: nav_ml
+layout: base
 description: Varun's CPT Feature aspect of logging stock transactions.
 ---
 
@@ -24,7 +24,7 @@ description: Varun's CPT Feature aspect of logging stock transactions.
             background-color: #222;
             margin: 0;
             padding: 0;
-            display: flex; /* Change to flex */
+            display: block; /* Change to flex */
             justify-content: center;
             align-items: center;
             min-height: 100vh; /* Change to min-height */
