@@ -18,13 +18,75 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
             background: #ffffff;
             color: #000000;
         }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Change to flex */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Change to min-height */
+        }
+        .container {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 100%; /* Change to max-width */
+            overflow-x: auto; /* Allow horizontal scrolling */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 16px;
+        }
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #444;
+            color: #fff;
+            font-size: 16px;
+        }
+        button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            background-color: #525252;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 10px;
+        }
+        button:hover {
+            background-color: #454746;
+        }
+        .canvas-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Adjust as needed */
+        }
     </style>
     <link id="theme-style" rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
-<body class="lightmode">
+<body class="container">
     <h1>User Money Over Transactions Graph</h1>
-    <div id="result">
-        <canvas id="stockChart"></canvas>
+    <div class="canvas-containter" id="result">
+        <canvas id="stockChart" width="400" height="400"></canvas>
     </div>
     <table id="stockTable">
         <thead>
