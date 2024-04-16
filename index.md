@@ -12,7 +12,9 @@ Learn more below or click the link at the top right to see our Login, CPT, and M
 
 # About
 
-Predictably, as a group of six (a blend of two team triangles), it's extremely difficult to manage work and facilitate a functioning environment in which a valuable end product can actually be produced with the use of good communication, collaboration, and effort. However, we overall plan to utilize assets such as pull requests, online calling, and in class discussions and planning in order to accomplish our goals as a team.
+We are a group of six students in the AP Computer Science Principles enrollment at Del Norte High School in San Diego, California. We are aspiring computer science apprentices learning to work and function in the digital field.
+
+Predictably, as a group of six (a blend of two team triangles), it's extremely difficult to manage work and facilitate a functioning environment in which a valuable end product can actually be produced with the use of good communication, collaboration, and effort. However, we demonstrate efficiency in utilizing assets such as pull requests, online communication, and in class discussions and planning in order to accomplish our goals as a team.
 
 ### Team Members' Personal Pages Links
 
