@@ -54,53 +54,7 @@ document.querySelectorAll('.lineWidthSelector').forEach(item => {
     lineWidth = parseInt(this.textContent); // Set the line width based on the button text content
   });
 });
-// event listener drawing choice
-var drawingChoices = document.querySelectorAll('input[name="drawingChoice"]');
-drawingChoices.forEach(function (choice) {
-  choice.addEventListener('change', function () {
-    var selectedChoice = document.querySelector('input[name="drawingChoice"]:checked').value;
-    document.getElementById('question').textContent = "You are drawing a " + selectedChoice + ".";
-    displayAnswerImage(selectedChoice);
-  });
-});
-// displays answer image
-function displayAnswerImage(choice) {
-  switch (choice) {
-    case 'Cat':
-      drawImageOnCanvas('img/fill-in-cat.png');
-      break;
-    case 'Cookie':
-      drawImageOnCanvas('img/fill-in-cookie.png');
-      break;
-    case 'House':
-      drawImageOnCanvas('img/fill-in-house.png');
-      break;
-  }
-}
-// puts image on canvas
-function drawImageOnCanvas(imgource) {
-  const img = new Image();
-  img.onload = function () {
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-  };
-  img.src = imgource;
-}
-drawingChoices.forEach(function (choice) {
-  choice.addEventListener('change', function () {
-    var selectedChoice = document.querySelector('input[name="drawingChoice"]:checked').value;
-    switch (selectedChoice) {
-      case 'Cat':
-        drawImageOnCanvas('img/fill-in-cat.png');
-        break;
-      case 'Cookie':
-        drawImageOnCanvas('img/fill-in-cookie.png');
-        break;
-      case 'House':
-        drawImageOnCanvas('img/fill-in-house.png');
-        break;
-    }
-  });
-});
+
 
 function download() {
   let link = document.createElement("a")
