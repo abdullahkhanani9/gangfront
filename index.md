@@ -17,7 +17,7 @@ Predictably, as a group of six (a blend of two team triangles), it's extremely d
 ### Team Members' Personal Pages Links
 
 - Tucker: [Issue Link](https://github.com/tuckergol/student2/issues/23)
-- Aditya: [Issue Link]()
+- Aditya: [Issue Link](https://github.com/ad1tyad3sa1/cspblog_adityad/issues/6)
 - Varun: [Issue Link](https://github.com/varunm532/varun2/issues/21)
 - Abdullah: [Issue Link]()
 - Deva: [Issue Link]()
