@@ -74,19 +74,19 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
         button:hover {
             background-color: #454746;
         }
-        .canvas-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Adjust as needed */
+        canvas {
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            transform: translate(-50%, -50%);
+            position: fixed;
         }
     </style>
-    <link id="theme-style" rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body class="container">
     <h1>User Money Over Transactions Graph</h1>
     <div class="canvas-containter" id="result">
-        <canvas id="stockChart" width="400" height="400"></canvas>
+        <canvas id="stockChart" width="5000" height="400"></canvas>
     </div>
     <table id="stockTable">
         <thead>
