@@ -202,16 +202,29 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
                     console.log(data)
                     var dataSet = anychart.data.set(data);
                     // map the data for all series
-                    var firstSeriesData = dataSet.mapAs({x: 0, value: 1});
+                    var firstSeriesData = dataSet.mapAs({value: 1});
                     // create a line chart
                     var chart = anychart.line();
                     // create the series and name them
                     var firstSeries = chart.line(firstSeriesData);            // add a legend
-                    chart.legend().enabled(true);
+                    //chart.legend().enabled(true);
                     // add a title
-                    chart.title("Account Balance");
+                    chart.title("Account Balance")
                     // specify where to display the chart
                     chart.container("container");
+                    chart.background().fill("#333")
+                    chart.xAxis().stroke({
+                        // set stroke color
+                        color: "gold",
+                        // set dashes and gaps length
+                    });
+                    chart.yAxis().stroke({
+                        // set stroke color
+                        color: "gold",
+                        // set dashes and gaps length
+                    });
+                    chart.xAxis().labels().fontColor("gold");
+                    chart.yAxis().labels().fontColor("gold");
                     // draw the resulting chart
                     chart.draw();
                     graph()
