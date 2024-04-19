@@ -82,12 +82,16 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
             position: fixed;
         }
     </style>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js"></script>
+    <style type="text/css">      
+     html, body, #container { 
+        width: 100%; height: 200%; margin: 0; padding: 0; 
+      } 
+    </style>
 </head>
 <body class="container">
     <h1>User Money Over Transactions Graph</h1>
-    <div class="canvas-containter" id="result">
-        <canvas id="stockChart" width="5000" height="400"></canvas>
-    </div>
+    <div id="container"></div>
     <table id="stockTable">
         <thead>
             <tr>
@@ -156,26 +160,63 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
         });
     </script>
     <script>
-        function graph(){
-            const uid = localStorage.getItem("uid");
-            fetch('http://127.0.0.1:8008/api/stocks/graph', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ uid: uid })
-            })
-            .then(response => response.json())
-            .then(data => {
-                var img = document.createElement('img');
-                img.src = 'data:image/png;base64,' + data.image;
-                document.getElementById('result').appendChild(img);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-        graph()
+    //    function graph(){
+    //        const uid = localStorage.getItem("uid");
+    //        fetch('http://127.0.0.1:8008/api/stocks/graph', {
+    //            method: 'POST',
+    //            headers: {
+    //                'Content-Type': 'application/json'
+    //            },
+    //            body: JSON.stringify({ uid: uid })
+    //        })
+    //        .then(response => response.json())
+    //        .then(data => {
+    //            var img = document.createElement('img');
+    //            img.src = 'data:image/png;base64,' + data.image;
+    //            document.getElementById('result').appendChild(img);
+    //        })
+    //        .catch(error => {
+    //            console.error('Error:', error);
+    //        });
+    //    }
+    //    graph()
+    </script>
+    <script>
+        anychart.onDocumentReady(function() {
+    // The main JS line charting code will be here.\
+            var url = 'http://127.0.0.1:8008/api/stocks/owned';
+            var uid = localStorage.getItem('uid')
+            var payload = {
+                uid: uid
+            }
+            var json = JSON.stringify(payload)
+            var authOptions = {
+                credentials: 'include',
+                body: json,
+                method: 'Post',
+                headers: { 'Content-Type': 'application/json' }        
+            }
+            fetch(url,authOptions)
+                .then(response => response.json())
+                .then( data =>{
+                    console.log(data)
+                    var dataSet = anychart.data.set(data);
+                    // map the data for all series
+                    var firstSeriesData = dataSet.mapAs({x: 0, value: 1});
+                    // create a line chart
+                    var chart = anychart.line();
+                    // create the series and name them
+                    var firstSeries = chart.line(firstSeriesData);            // add a legend
+                    chart.legend().enabled(true);
+                    // add a title
+                    chart.title("Account Balance");
+                    // specify where to display the chart
+                    chart.container("container");
+                    // draw the resulting chart
+                    chart.draw();
+                    graph()
+                })
+    });
     </script>
 </body>
 </html>
