@@ -8,6 +8,7 @@ permalink: /editor
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Maker</title>
@@ -18,18 +19,22 @@ permalink: /editor
             margin: 0;
             padding: 0;
         }
+
         h1 {
             text-align: center;
-            color: #fff;
+            color: #333;
         }
+
         div {
             margin-bottom: 15px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
-            color: #fff;
+            color: #555;
         }
+
         input[type="file"],
         input[type="text"] {
             width: 100%;
@@ -38,9 +43,11 @@ permalink: /editor
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+
         input[type="checkbox"] {
             margin-right: 5px;
         }
+
         button {
             background-color: #4CAF50;
             color: #fff;
@@ -49,20 +56,25 @@ permalink: /editor
             border-radius: 4px;
             cursor: pointer;
         }
+
+
         .container {
             text-align: center;
             margin-top: 20px;
         }
+
         .bottom-half {
             padding: 20px;
             border-radius: 4px;
             display: inline-block;
         }
+
         #uploadedImage {
             max-width: 100%;
             display: none;
             margin-top: 10px;
         }
+
         #downloadButton {
             margin-top: 10px;
         }
@@ -126,7 +138,7 @@ permalink: /editor
         },
     };
     
-    const url = "http://127.0.0.8008/api/memeforge/maker/";
+    const url = "http://127.0.0.1:8008/api/memeforge/maker/";
     
     function error(message) {
         console.error(message);
@@ -225,3 +237,4 @@ permalink: /editor
 </script>
 
 </body>
+
