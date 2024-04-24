@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Our CPT Features!
+title: Project Features
 search_exclude: true
 permalink: /blogs/
 ---
