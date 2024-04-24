@@ -104,7 +104,9 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
             <!-- Table content will be dynamically populated using JavaScript -->
         </tbody>
     </table>
-    <script>
+    <script type="module">
+        import { uri, options1 } from '/teacher_portfolio/assets/js/api/config.js';
+        let options = options1
         var darkMode = false;
         window.onload = function () {
             var themeStyle = document.getElementById('theme-style');
@@ -128,12 +130,16 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
                     uid: uid
                 };
                 var json = JSON.stringify(data);
+                //const authOptions = {
+                //    method: 'POST',
+                //    headers: { 'Content-Type': 'application/json' },
+                //    body: json,
+                //    credentials: 'include'
+                //};
                 const authOptions = {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: json,
-                    credentials: 'include'
-                };
+                            ...options,
+                            body:json,
+                        };
                 fetch(url, authOptions)
                     .then(response => response.json())
                     .then(data => {
@@ -181,7 +187,9 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
     //    }
     //    graph()
     </script>
-    <script>
+    <script type="module">
+        import { uri, options1 } from '/teacher_portfolio/assets/js/api/config.js';
+        let options = options1
         anychart.onDocumentReady(function() {
     // The main JS line charting code will be here.\
             var url = 'http://127.0.0.1:8008/api/stocks/owned';
@@ -190,12 +198,16 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
                 uid: uid
             }
             var json = JSON.stringify(payload)
-            var authOptions = {
-                credentials: 'include',
-                body: json,
-                method: 'Post',
-                headers: { 'Content-Type': 'application/json' }        
-            }
+            //var authOptions = {
+            //    credentials: 'include',
+            //    body: json,
+            //    method: 'Post',
+            //    headers: { 'Content-Type': 'application/json' }        
+            //}
+            const authOptions = {
+                            ...options,
+                            body:json,
+                        };
             fetch(url,authOptions)
                 .then(response => response.json())
                 .then( data =>{

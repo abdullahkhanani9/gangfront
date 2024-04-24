@@ -93,7 +93,9 @@ description: Varun's CPT Feature aspect of logging stock transactions.
             <!-- Table content will be dynamically populated using JavaScript -->
         </tbody>
         </table>
-        <script>
+        <script type="module">
+        import { uri, options1 } from '/teacher_portfolio/assets/js/api/config.js';
+        let options = options1
     var darkMode = false;
     window.onload = function () {
         var themeStyle = document.getElementById('theme-style');
@@ -117,12 +119,16 @@ description: Varun's CPT Feature aspect of logging stock transactions.
                 uid: uid
             }
             var json = JSON.stringify(data)
+            //const authOptions = {
+            //    method: 'POST',
+            //    headers: { 'Content-Type': 'application/json' },
+            //    body: json,
+            //    credentials: 'include'
+            //}
             const authOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: json,
-                credentials: 'include'
-            }
+                            ...options,
+                            body:json,
+                        };
             fetch(url, authOptions)
                 .then(response => response.json())
                 .then(data => {

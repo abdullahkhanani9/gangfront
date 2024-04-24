@@ -16,3 +16,11 @@ export const options = {
         'Content-Type': 'application/json',
     },
 };
+export const options1 = {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        credentials: 'include', // include, same-origin, omit
+        headers: {
+            'Content-Type': 'application/json',
+        },
+
+    };
