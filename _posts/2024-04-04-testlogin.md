@@ -6,7 +6,6 @@ description: This is our Login system.
 ---
 
 <html lang="en">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
@@ -41,8 +40,7 @@ description: This is our Login system.
             font-size: 16px;
         }
         input[type="text"],
-        input[type="password"],
-        select {
+        input[type="password"] {
             width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 20px;
@@ -71,11 +69,11 @@ description: This is our Login system.
         <h1>Login</h1>
         <form>
             <label for="name">Username:</label>
-            <input type="text" name="name" id="name" required>
+            <input type="text" id="name" required>
             <label for="uid">User ID:</label>
-            <input type="text" name="uid" id="uid" required>
+            <input type="text" id="uid" required>
             <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required>
+            <input type="password" id="password" required>
             <button type="button" onclick="sign_in()">Login</button>
         </form>
     </div>
@@ -94,36 +92,25 @@ description: This is our Login system.
                 cache: 'no-cache',
                 credentials: 'include'
             };
-            // Fetch the JWT
             fetch(authurl, authOptions)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                // Console log the success
-                var users = document.getElementById('users');
-                if(users) {
-                    users.innerHTML = JSON.stringify(data);
-                }
-                alert("User Doesnt Exist");
-                // window.location.href = "/register";
+                alert("User Does Not Exist");
             })
             .catch(err => {
                 console.error(err);
                 alert("User Authenticated Successfully");
-                userBody = "{" + "uid: " + document.getElementById('uid').value + "," + " password: " + document.getElementById('password').value + "}";
-                console.log(userBody);
                 window.localStorage.setItem('uid', document.getElementById('uid').value);
-                window.localStorage.setItem('userBody', userBody);
-                console.log(window.localStorage.getItem('userBody'));
-                console.log("User Auth Token Stored Successfully");
-                console.log(document.getElementById('uid').value);
-                if (document.getElementById('uid').value == 'admin' || document.getElementById('uid').value == 'Admin'){
+                window.localStorage.setItem('name', document.getElementById('name').value);
+                console.log("UID and Name Stored Successfully");
+                if (document.getElementById('uid').value === 'admin' || document.getElementById('uid').value === 'Admin') {
                     window.location.href = "/AtlasIndex/display";
                     return;
-                }
-                else{
+                } else {
                     window.location.href = "/teacher_portfolio/blogs/";
                 }             
             });
         }
     </script>
+</html>
