@@ -23,4 +23,4 @@ Predictably, as a group of six (a blend of two team triangles), it's extremely d
 - Varun: [Issue Link](https://github.com/varunm532/varun2/issues/21)
 - Abdullah: [Issue Link]()
 - Deva: [Issue Link]()
-- Tejas: [Issue Link]()
+- Tejas: [Issue Link](https://github.com/TejM123/student2/issues/7)
