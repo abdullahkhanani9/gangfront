@@ -38,24 +38,10 @@ document.querySelectorAll('.colorSelector').forEach(item => {
     strokeColor = this.style.backgroundColor;
   });
 });
-// event listener for eraser
-var eraserEnabled = false;
-document.getElementById('eraser').addEventListener('click', function () {
-  eraserEnabled = !eraserEnabled;
-  if (eraserEnabled) {
-    strokeColor = 'white'; // Set the stroke color to white for erasing
-  } else {
-    strokeColor = 'black'; // Set the stroke color back to black for drawing
-  }
-});
-// event listeners for line width selectors
-document.querySelectorAll('.lineWidthSelector').forEach(item => {
-  item.addEventListener('click', function () {
-    lineWidth = parseInt(this.textContent); // Set the line width based on the button text content
-  });
-});
 
 
+
+// Function to download the canvas drawing as an image
 function download() {
   let link = document.createElement("a")
   link.download = 'painting.png'
@@ -63,35 +49,45 @@ function download() {
   link.click()
 }
 
+// Event listener for selecting an image file to upload
 let painting = document.getElementById("paintingfile")
 let paintingimg = document.getElementById("paintingimg")
-const endpoint = "http://127.0.0.1:8008/uploadPainting"
+const uploadEndpoint = "http://127.0.0.1:8008/api/paint_api/uploadPainting/"
 function sendPainting() {
+  // Prepare payload containing the painting data and user ID
   let payload =
   {
-   "painting":paintingimg.src
+   "painting":paintingimg.src, // The painting image data
+   "user_id":localStorage.getItem("uid") // The user ID obtained from localStorage
   }
-  fetch(endpoint,
+
+  // Send a POST request to the upload endpoint with the payload
+  fetch(uploadEndpoint,
     {
-      method: "POST",
+      method: "POST", // HTTP POST method
       headers: {
         "Content-Type": "application/json"
       },
-      credentials: "include",
-      body: JSON.stringify(payload)
+      credentials: "include", // Include cookies in the request
+      body: JSON.stringify(payload) // Convert payload to JSON string
     }).then(response => {
+      // Check if the response is successful (HTTP status code 2xx)
+
       if (response.ok) {
-        return response.text()
+        return response.text(); // Return the response text if successful
       }
+
+      // Throw an error if the response is not successful
       throw new Error("Network response failed")
     }).then(data => {
-      
+      // Do something with the response data if needed
     })
     .catch(error => {
+      // Log an error message if there was a problem with the fetch
       console.error("There was a problem with the fetch", error);
     });
 }
-
+// Event listener for selecting an image file
 painting.addEventListener('change', function (event) {
   const file = event.target.files[0]; // Get the selected file
   if (file) {
