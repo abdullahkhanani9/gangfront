@@ -7,8 +7,8 @@ description: Varun's CPT Feature aspect of logging stock transactions.
 
 <html>
     <h3>Transaction Log</h3>
-    <a href="/teacher_portfolio/stocks">Back</a>
-    <a href="/teacher_portfolio/portfolio">Portfolio</a>
+    <a href="/csp_project/stocks">Back</a>
+    <a href="/csp_project/portfolio">Portfolio</a>
     <head>
     <style>
         .darkmode {
@@ -94,7 +94,7 @@ description: Varun's CPT Feature aspect of logging stock transactions.
         </tbody>
         </table>
         <script type="module">
-        import { uri, options1 } from '/teacher_portfolio/assets/js/api/config.js';
+        import { uri, options1 } from '/csp_project/assets/js/api/config.js';
         let options = options1
     var darkMode = false;
     window.onload = function () {

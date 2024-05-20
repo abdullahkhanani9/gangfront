@@ -6,8 +6,8 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
 ---
 
 <html>
-<a href="/teacher_portfolio/stocks">Back</a>
-<a href="/teacher_portfolio/transactionlog">Transaction Log</a>
+<a href="/csp_project/stocks">Back</a>
+<a href="/csp_project/transactionlog">Transaction Log</a>
 <head>
     <style>
         .darkmode {
@@ -105,7 +105,7 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
         </tbody>
     </table>
     <script type="module">
-        import { uri, options1 } from '/teacher_portfolio/assets/js/api/config.js';
+        import { uri, options1 } from '/csp_project/assets/js/api/config.js';
         let options = options1
         var darkMode = false;
         window.onload = function () {
@@ -188,7 +188,7 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
     //    graph()
     </script>
     <script type="module">
-        import { uri, options1 } from '/teacher_portfolio/assets/js/api/config.js';
+        import { uri, options1 } from '/csp_project/assets/js/api/config.js';
         let options = options1
         anychart.onDocumentReady(function() {
     // The main JS line charting code will be here.\
