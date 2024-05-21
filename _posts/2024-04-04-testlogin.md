@@ -96,19 +96,18 @@ description: This is our Login system.
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                alert("User Does Not Exist");
+                alert("User does not exist.");
             })
             .catch(err => {
                 console.error(err);
-                alert("User Authenticated Successfully");
+                alert("User authenticated auccessfully!");
                 window.localStorage.setItem('uid', document.getElementById('uid').value);
-                window.localStorage.setItem('name', document.getElementById('name').value);
-                console.log("UID and Name Stored Successfully");
+                console.log("UID and stored successfully");
                 if (document.getElementById('uid').value === 'admin' || document.getElementById('uid').value === 'Admin') {
                     window.location.href = "/AtlasIndex/display";
                     return;
                 } else {
-                    window.location.href = "/teacher_portfolio/blogs/";
+                    window.location.href = "/csp_project/blogs/";
                 }             
             });
         }
