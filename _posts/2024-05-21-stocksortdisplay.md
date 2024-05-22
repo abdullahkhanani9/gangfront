@@ -81,7 +81,6 @@ description: Varun's CPT Feature of displaying stocks.
                     <th>SYM</th>
                     <th>Company Name</th>
                     <th>Qty Available</th>
-                    <th>Unit Price</th>
                     <th>Action (Buy)</th>
                     <th>Action (Sell)</th>
                 </tr>
@@ -130,9 +129,31 @@ description: Varun's CPT Feature of displaying stocks.
                         .then(data => {
                             console.log(data);
                             window.localStorage.setItem('GICS Sector', json);
+                            createTable(data)
                         })
                         .catch(error => console.error('Error fetching data:', error));
                 // Function to update the table with data
+                function createTable(data) { 
+                    var url ='http://127.0.0.1:8008/api/stocks/sortdisplay'
+                    var data = data
+                    var json = JSON.stringify(data)
+                    const authOptions = {
+                            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                            credentials: 'include', // include, same-origin, omit
+                            body: json,
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                        };
+                    fetch(url, authOptions)
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            //window.localStorage.setItem('GICS Sector', json);
+                            updateTable(data)
+                        })
+                        .catch(error => console.error('Error fetching data:', error));
+                }
                 function updateTable(data) {
                     const tableBody = document.querySelector('#stockTable tbody');
                     tableBody.innerHTML = ''; // Clear existing rows
@@ -142,7 +163,6 @@ description: Varun's CPT Feature of displaying stocks.
                             <td>${stock.symbol}</td>
                             <td>${stock.company}</td>
                             <td>${stock.quantity}</td>
-                            <td>${stock.sheesh}</td>
                             <td><button class="buy-button" onclick="buyStock('${stock.sym}')">Buy</button></td>
                             <td><button class="sell-button" onclick="sellStock('${stock.sym}')">Sell</button></td>
                         `;
