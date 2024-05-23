@@ -88,8 +88,8 @@ description: Varun's CPT Feature of displaying stocks.
                 <!-- Table content will be dynamically populated using JavaScript -->
             </tbody>
         </table>
-        <h3><a href="/csp_project/sort">Can't find the stock your looking for? Sort by industry sectors</a></h3>
-        <h3><a href="/csp_project/filter">Can't find the stock your looking for? Sort by data founded</a></h3>
+        <h3><a href="/frontgang/sort">Can't find the stock your looking for? Sort by industry sectors</a></h3>
+        <h3><a href="/frontgang/filter">Can't find the stock your looking for? Sort by data founded</a></h3>
         <script type="module">
             import { uri, options1 } from '/frontgang/assets/js/api/config.js';
             let options = options1
