@@ -107,7 +107,7 @@ description: This is our Login system.
                     window.location.href = "/AtlasIndex/display";
                     return;
                 } else {
-                    window.location.href = "/csp_project/blogs/";
+                    window.location.href = "/frontgang/blogs/";
                 }             
             });
         }

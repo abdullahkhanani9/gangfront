@@ -6,8 +6,8 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
 ---
 
 <html>
-<a href="/csp_project/stocks">Back</a>
-<a href="/csp_project/transactionlog">Transaction Log</a>
+<a href="/frontgang/stocks">Back</a>
+<a href="/frontgang/transactionlog">Transaction Log</a>
 <head>
     <style>
         .darkmode {
@@ -106,7 +106,7 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
         </tbody>
     </table>
 <script type="module">
-    import { uri, options1 } from '/csp_project/assets/js/api/config.js';
+    import { uri, options1 } from '/frontgang/assets/js/api/config.js';
     document.addEventListener("DOMContentLoaded", function () {
         function fetchData() {
             var url = 'http://127.0.0.1:8008/api/stocks/portfolio';

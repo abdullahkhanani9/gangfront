@@ -143,7 +143,7 @@ description: Varun's CPT Feature of displaying stocks.
                         .then(data => {
                             console.log(data);
                             window.localStorage.setItem('GICS Sector', json);
-                            window.location.href = "/csp_project/stocksort" 
+                            window.location.href = "/frontgang/stocksort" 
                         })
                         .catch(error => console.error('Error fetching data:', error));
                 }

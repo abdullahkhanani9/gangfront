@@ -74,7 +74,7 @@ description: Varun's CPT Feature of displaying stocks.
     </style>
         <link id="theme-style" rel="stylesheet" type="text/css" href="assets/css/style.css">
     <body class="container">
-        <h3 id= "Balance"></h3> <a href="/csp_project/transactionlog">Transaction Log</a> <a href="/csp_project/portfolio">Portfolio</a>
+        <h3 id= "Balance"></h3> <a href="/frontgang/transactionlog">Transaction Log</a> <a href="/frontgang/portfolio">Portfolio</a>
         <table id="stockTable">
             <thead>
                 <tr>
@@ -88,9 +88,9 @@ description: Varun's CPT Feature of displaying stocks.
                 <!-- Table content will be dynamically populated using JavaScript -->
             </tbody>
         </table>
-        <h3><a href="/csp_project/sort">Can't find the stock your looking for? Sort by industry sectors</a></h3>
+        <h3><a href="/frontgang/sort">Can't find the stock your looking for? Sort by industry sectors</a></h3>
         <script type="module">
-            import { uri, options1 } from '/csp_project/assets/js/api/config.js';
+            import { uri, options1 } from '/frontgang/assets/js/api/config.js';
             let options = options1
             var darkMode = false;
             //window.onload = function () {
