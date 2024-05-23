@@ -88,6 +88,7 @@ description: Varun's CPT Feature of displaying stocks.
                 <!-- Table content will be dynamically populated using JavaScript -->
             </tbody>
         </table>
+        <h3><a href="/csp_project/sort">Can't find the stock your looking for? Sort by industry sectors</a></h3>
         <script type="module">
             import { uri, options1 } from '/csp_project/assets/js/api/config.js';
             let options = options1

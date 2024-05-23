@@ -123,7 +123,7 @@ description: Varun's CPT Feature of displaying stocks.
                     const label = dataValue.labels[datasetIndex];
                     const labelValue = dataValue.datasets[0].data[datasetIndex];
                     // Show an alert with information about the clicked segment
-                    alert(`Clicked on: ${label} and it's value is ${labelValue}`);
+                    alert(`Clicked on: ${label} and it accounts of ${labelValue} % of the S&P 500`);
                     console.log(label)
                     var url ='http://127.0.0.1:8008/api/sort/sort'
                     var data = {
