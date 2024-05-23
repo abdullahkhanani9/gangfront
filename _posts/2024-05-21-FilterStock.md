@@ -32,6 +32,8 @@ description: Aditya's final project of using merge sorting to filter stock data.
         <tbody id="dataBody">
         </tbody>
     </table>
+    <h3><a href="/csp_project/sort">Can't find the stock your looking for? Sort by industry sectors</a></h3>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"></script>
 
