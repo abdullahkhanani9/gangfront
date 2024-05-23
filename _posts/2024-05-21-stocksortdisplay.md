@@ -82,7 +82,6 @@ description: Varun's CPT Feature of displaying stocks.
                     <th>Company Name</th>
                     <th>Qty Available</th>
                     <th>Action (Buy)</th>
-                    <th>Action (Sell)</th>
                 </tr>
             </thead>
             <tbody>
@@ -114,24 +113,26 @@ description: Varun's CPT Feature of displaying stocks.
             }
             document.addEventListener("DOMContentLoaded", function () {
                 // Function to make API call and update the table
-                var json = localStorage.getItem("GICS Sector");
-                var url ='http://127.0.0.1:8008/api/sort/sort'
-                const authOptions = {
-                        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                        credentials: 'include', // include, same-origin, omit
-                        body: json,
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    };
-                    fetch(url, authOptions)
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-                            window.localStorage.setItem('GICS Sector', json);
-                            createTable(data)
-                        })
-                        .catch(error => console.error('Error fetching data:', error));
+                function fetchData(){
+                    var json = localStorage.getItem("GICS Sector");
+                    var url ='http://127.0.0.1:8008/api/sort/sort'
+                    const authOptions = {
+                            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                            credentials: 'include', // include, same-origin, omit
+                            body: json,
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                        };
+                        fetch(url, authOptions)
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log(data);
+                                window.localStorage.setItem('GICS Sector', json);
+                                createTable(data)
+                            })
+                            .catch(error => console.error('Error fetching data:', error));
+                }
                 // Function to update the table with data
                 function createTable(data) { 
                     var url ='http://127.0.0.1:8008/api/stocks/sortdisplay'
@@ -164,25 +165,46 @@ description: Varun's CPT Feature of displaying stocks.
                             <td>${stock.company}</td>
                             <td>${stock.quantity}</td>
                             <td><button class="buy-button" onclick="buyStock('${stock.sym}')">Buy</button></td>
-                            <td><button class="sell-button" onclick="sellStock('${stock.sym}')">Sell</button></td>
                         `;
                         tableBody.appendChild(row);
-                        const sellButton = row.querySelector('.sell-button')
-                        sellButton.addEventListener('click', function(){
-                            sellStock(stock.symbol,stock.quantity);
-                        })
                         const buyButton = row.querySelector('.buy-button');
                         buyButton.addEventListener('click', function () {
-                            buyStock(stock.symbol,stock.quantity);
+                            var url ='http://127.0.0.1:8008/api/stocks/singleupdate'
+                            var sym = stock.symbol
+                            console.log(sym)
+                            //var json = JSON.stringfy(sym)
+                            var data = {
+                                symbol: sym
+                            }
+                            var json = JSON.stringify(data)
+                            const authOptions = {
+                                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                                    credentials: 'include', // include, same-origin, omit
+                                    body: json,
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                };
+                            console.log(authOptions)
+                                fetch(url, authOptions)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        console.log(data);
+                                        var price = data
+                                        console.log("this is price")
+                                        console.log(price)
+                                        buyStock(stock.symbol,stock.quantity,price);
+                                    })
+                                    .catch(error => console.error('Error fetching data:', error));
                     });})
                 }
                 // Function to handle buy button click
     // Call the function to decode and extract values
     // Call the function to decode the cookie
-            function buyStock(symbol, quantity,options1) {
+            function buyStock(symbol, quantity,price) {
                 // You can implement your buy logic here
-                console.log(`Buying stock with symbol: ${symbol}`);
-                const quantityToBuy = prompt(`How many stocks of ${symbol} do you wish to buy?`, '1');
+                console.log(`Buying stock with symbol: ${symbol} for $ ${price}`);
+                const quantityToBuy = prompt(`How many stocks of ${symbol} do you wish to buy? The current price is $ ${price}`, '1');
                 const availableQuantity = quantity;
                 if (quantityToBuy !== null && !isNaN(quantityToBuy) && quantityToBuy > 0) {
                     if (quantityToBuy <= availableQuantity) {
@@ -204,9 +226,13 @@ description: Varun's CPT Feature of displaying stocks.
                        //    credentials: 'include'
                        //}
                         const authOptions = {
-                            ...options,
-                            body:json,
-                        };
+                                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                                    credentials: 'include', // include, same-origin, omit
+                                    body: json,
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                };
                         fetch(url, authOptions)
                             .then(response => {
                                 if (!response.ok) {
