@@ -3,7 +3,7 @@ description: "CB (CPT submission) project for AP CSP 2023-2024"
 owner_name: John Mortensen
 github_username: tuckergol
 github_repo: "frontgang"
-baseurl: "/frontgang/"
+baseurl: "/frontgang"
 future: true
 remote_theme: jekyll/minima
 minima:
