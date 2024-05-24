@@ -138,80 +138,83 @@ permalink: /editor
         },
     };
     
-    const url = "http://127.0.0.1:8008/api/memeforge/maker/";
+    const url = "http://127.0.0.1:8008/api/memeforge/maker";
     
     function error(message) {
         console.error(message);
     }
-    
     function makeMeme() {
-        const imageInput = document.getElementById('imageInput');
-        const topText = document.getElementById('topText').value;
-        const bottomText = document.getElementById('bottomText').value;
-        const uploadedImage = document.getElementById('uploadedImage');
-        const addToDatabaseCheckbox = document.getElementById('addToDatabase');
+    const imageInput = document.getElementById('imageInput');
+    const topText = document.getElementById('topText').value;
+    const bottomText = document.getElementById('bottomText').value;
+    const uploadedImage = document.getElementById('uploadedImage');
+    const addToDatabaseCheckbox = document.getElementById('addToDatabase');
 
-        const file = imageInput.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-    
-            reader.onload = function (e) {
-                const base64data = e.target.result.split(',')[1];
-                const filename = file.name;
-                const fileExtension = filename.split('.').pop();
-                const addToDatabase = addToDatabaseCheckbox.checked;
-                uploadedImageName = file.name;
-                const data = {
-                    base64data: base64data,
-                    top_text: topText,
-                    bottom_text: bottomText,
-                    addToHistory: addToDatabase,
-                    filename: filename,
-                };
-    
-                const image_options = {
-                    method: 'POST',
-                    mode: 'cors',
-                    cache: 'default',
-                    credentials: 'omit',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                };
-    
-                fetch(url, image_options)
-                    .then(response => {
-                        if (response.status !== 200) {
-                            error('Api error: ' + response.status);
-                            return;
-                        }
-                        response.json().then(data => {
-                            const memeImage = new Image();
-                            memeImage.src = 'data:image/' + fileExtension + ';base64,' + data['base64image'];
-    
-                            memeImage.style.maxHeight = '100%';
-    
-                            uploadedImage.src = memeImage.src;
-                            uploadedImage.style.display = 'block';
-    
-                            memeImage.onload = function () {
-                                const parent = document.querySelector('.bottom-half');
-                                const ratio = parent.clientWidth / memeImage.width;
-    
-                                if (ratio < 1) {
-                                    const maxHeight = ratio * memeImage.height;
-                                    parent.style.height = (maxHeight + 175) + 'px';
-                                } else {
-                                    parent.style.height = (memeImage.height + 175) + 'px';
-                                }
-                            };
-                        });
-                    });
+    const file = imageInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onload = function (e) {
+            const base64data = e.target.result.split(',')[1];
+            const filename = file.name;
+            const fileExtension = filename.split('.').pop();
+            const addToDatabase = addToDatabaseCheckbox.checked;
+            uploadedImageName = file.name;
+            const data = {
+                base64data: base64data,
+                top_text: topText,
+                bottom_text: bottomText,
+                addToHistory: addToDatabase,
+                filename: filename,
             };
-        }
+
+            const image_options = {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'http://127.0.0.1:4100'
+                },
+                body: JSON.stringify(data)
+            };
+
+            fetch('http://127.0.0.1:8008/api/memeforge/maker', image_options)
+                .then(response => {
+                    if (response.status !== 200) {
+                        error('API error: ' + response.status);
+                        return;
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data) {
+                        const memeImage = new Image();
+                        memeImage.src = 'data:image/' + fileExtension + ';base64,' + data['base64image'];
+
+                        memeImage.style.maxHeight = '100%';
+
+                        uploadedImage.src = memeImage.src;
+                        uploadedImage.style.display = 'block';
+
+                        memeImage.onload = function () {
+                            const parent = document.querySelector('.bottom-half');
+                            const ratio = parent.clientWidth / memeImage.width;
+
+                            if (ratio < 1) {
+                                const maxHeight = ratio * memeImage.height;
+                                parent.style.height = (maxHeight + 175) + 'px';
+                            } else {
+                                parent.style.height = (memeImage.height + 175) + 'px';
+                            }
+                        };
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        };
     }
+}
+
     function handleDownloadClick() {
         const uploadedImage = document.getElementById('uploadedImage');
         const memeImage = new Image();
@@ -316,7 +319,7 @@ permalink: /editor
         <img class="modal-content" id="modal-image">
     </div>
     <script>
-        const apiUrl = "http://127.0.0.1:8008/api/memeforge/get_database";
+        const apiUrl = " ";
         let images = [];
         function fetchDatabase() {
             fetch(apiUrl)
