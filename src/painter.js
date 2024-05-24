@@ -52,7 +52,7 @@ function download() {
 // Event listener for selecting an image file to upload
 let painting = document.getElementById("paintingfile")
 let paintingimg = document.getElementById("paintingimg")
-const uploadEndpoint = "http://127.0.0.1:8008/api/paint_api/uploadPainting/"
+const uploadEndpoint = "http://127.0.0.1:8476/api/paint_api/uploadPainting/"
 function sendPainting() {
   // Prepare payload containing the painting data and user ID
   let payload =

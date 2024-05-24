@@ -117,7 +117,7 @@ description: Varun's CPT Feature of displaying stocks.
                 // Function to make API call and update the table
                 function fetchData(){
                     var json = localStorage.getItem("GICS Sector");
-                    var url ='http://127.0.0.1:8008/api/sort/sort'
+                    var url ='http://127.0.0.1:8476/api/sort/sort'
                     const authOptions = {
                             method: 'POST', // *GET, POST, PUT, DELETE, etc.
                             credentials: 'include', // include, same-origin, omit
@@ -137,7 +137,7 @@ description: Varun's CPT Feature of displaying stocks.
                 }
                 // Function to update the table with data
                 function createTable(data) { 
-                    var url ='http://127.0.0.1:8008/api/stocks/sortdisplay'
+                    var url ='http://127.0.0.1:8476/api/stocks/sortdisplay'
                     var data = data
                     var json = JSON.stringify(data)
                     const authOptions = {
@@ -171,7 +171,7 @@ description: Varun's CPT Feature of displaying stocks.
                         tableBody.appendChild(row);
                         const buyButton = row.querySelector('.buy-button');
                         buyButton.addEventListener('click', function () {
-                            var url ='http://127.0.0.1:8008/api/stocks/singleupdate'
+                            var url ='http://127.0.0.1:8476/api/stocks/singleupdate'
                             var sym = stock.symbol
                             console.log(sym)
                             //var json = JSON.stringfy(sym)
@@ -211,7 +211,7 @@ description: Varun's CPT Feature of displaying stocks.
                 if (quantityToBuy !== null && !isNaN(quantityToBuy) && quantityToBuy > 0) {
                     if (quantityToBuy <= availableQuantity) {
                         alert(`Buying ${quantityToBuy} stocks of ${symbol}`);
-                        var url = 'http://127.0.0.1:8008/api/stocks/transaction'
+                        var url = 'http://127.0.0.1:8476/api/stocks/transaction'
                         const newQuantity = availableQuantity - quantityToBuy;
                         const uid = localStorage.getItem("uid");
                         var data = {
@@ -264,7 +264,7 @@ description: Varun's CPT Feature of displaying stocks.
                 const ownedQuantity = quantity; // Assuming quantity is the available quantity owned by the user
                 if (quantityToSell !== null && !isNaN(quantityToSell) && quantityToSell > 0 && quantityToSell <= ownedQuantity) {
                     alert(`Selling ${quantityToSell} stocks of ${symbol}`);
-                    var url = 'http://127.0.0.1:8008/api/stocks/sell';
+                    var url = 'http://127.0.0.1:8476/api/stocks/sell';
                     const uid = localStorage.getItem("uid");
                     var data = {
                         quantity: Number(quantityToSell),
@@ -320,7 +320,7 @@ description: Varun's CPT Feature of displaying stocks.
                             ...options,
                             body:json,
                         };
-                    var url = 'http://127.0.0.1:8008/api/stocks/stockmoney';
+                    var url = 'http://127.0.0.1:8476/api/stocks/stockmoney';
                     fetch(url, authOptions)
                         .then(response => response.json())
                         .then(data => {

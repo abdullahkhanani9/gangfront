@@ -138,7 +138,7 @@ permalink: /editor
         },
     };
     
-    const url = "http://127.0.0.1:8008/api/memeforge/maker";
+    const url = "http://127.0.0.1:8476/api/memeforge/maker";
     
     function error(message) {
         console.error(message);
@@ -179,7 +179,7 @@ permalink: /editor
                 body: JSON.stringify(data)
             };
 
-            fetch('http://127.0.0.1:8008/api/memeforge/maker', image_options)
+            fetch('http://127.0.0.1:8476/api/memeforge/maker', image_options)
                 .then(response => {
                     if (response.status !== 200) {
                         error('API error: ' + response.status);

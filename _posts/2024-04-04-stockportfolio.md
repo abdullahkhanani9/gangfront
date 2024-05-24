@@ -109,7 +109,7 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
     import { uri, options1 } from '/frontgang/assets/js/api/config.js';
     document.addEventListener("DOMContentLoaded", function () {
         function fetchData() {
-            var url = 'http://127.0.0.1:8008/api/stocks/portfolio';
+            var url = 'http://127.0.0.1:8476/api/stocks/portfolio';
             const uid = localStorage.getItem("uid");
             var data = {
                 uid: uid
@@ -142,7 +142,7 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
                 Balance()
                 const sellButton = row.querySelector('.sell-button');
                 sellButton.addEventListener('click', function () {
-                    var url = 'http://127.0.0.1:8008/api/stocks/singleupdate';
+                    var url = 'http://127.0.0.1:8476/api/stocks/singleupdate';
                     var sym = portfolio_data.SYMBOL; // Ensure correct symbol is used
                     console.log(sym);
                     var data = {
@@ -177,7 +177,7 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
             const ownedQuantity = quantity; // Assuming quantity is the available quantity owned by the user
             if (quantityToSell !== null && !isNaN(quantityToSell) && quantityToSell > 0 && quantityToSell <= ownedQuantity) {
                 alert(`Selling ${quantityToSell} stocks of ${symbol}`);
-                var url = 'http://127.0.0.1:8008/api/stocks/sell';
+                var url = 'http://127.0.0.1:8476/api/stocks/sell';
                 const uid = localStorage.getItem("uid");
                 var data = {
                     quantity: Number(quantityToSell),
@@ -231,7 +231,7 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
                             ...options1,
                             body:json,
                         };
-                    var url = 'http://127.0.0.1:8008/api/stocks/stockmoney';
+                    var url = 'http://127.0.0.1:8476/api/stocks/stockmoney';
                     fetch(url, authOptions)
                         .then(response => response.json())
                         .then(data => {
@@ -246,7 +246,7 @@ description: Varun's CPT Feature aspect regarding stock portfolios.
     });
         anychart.onDocumentReady(function() {
     // The main JS line charting code will be here.\
-            var url = 'http://127.0.0.1:8008/api/stocks/owned';
+            var url = 'http://127.0.0.1:8476/api/stocks/owned';
             var uid = localStorage.getItem('uid')
             var payload = {
                 uid: uid

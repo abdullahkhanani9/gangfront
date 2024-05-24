@@ -156,7 +156,7 @@ description: Tejas, Deva, and Abdullah's CUSTOM DATASET ML model.
                 prefarea: document.getElementById('prefarea').value
             }
             // Make a POST request to the backend API
-            fetch('http://127.0.0.1:8008/api/house_price/predict', {
+            fetch('http://127.0.0.1:8476/api/house_price/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -1,5 +1,5 @@
 // Define the endpoint for fetching paintings from the server
-const galleryEndpoint = "http://127.0.0.1:8008/api/paint_api/getPainting/"
+const galleryEndpoint = "http://127.0.0.1:8476/api/paint_api/getPainting/"
 
 // Get the gallery container element from the DOM
 let gallery =  document.getElementById("gallery")

@@ -73,7 +73,7 @@ description: Aditya's final project of using merge sorting to filter stock data.
                 const endYear = slider.noUiSlider.get()[1];
 
                 // Make a POST request to the API with the selected date range
-                fetch('http://127.0.0.1:8008/api/found/filter', {
+                fetch('http://127.0.0.1:8476/api/found/filter', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
