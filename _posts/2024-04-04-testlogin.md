@@ -79,7 +79,7 @@ description: This is our Login system.
     </div>
     <script>
         window.sign_in = function signin(){
-            const authurl = 'http://127.0.0.1/api/users/authenticate';
+            const authurl = 'http://127.0.0.1:8476/api/users/authenticate';
             const body = {
                 name: document.getElementById('name').value,
                 uid: document.getElementById('uid').value,
