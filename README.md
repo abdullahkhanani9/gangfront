@@ -90,4 +90,15 @@
         - includes code to upload the painting to the backend with user ID
         - handles file selection and preview for uploading images
 
+### House Price Predictor Project
+---
+- Created by Deva Sasikumar (devaSas1)
+- files concerning this feature: house_prices.html
+    - house_prices.html:
+        - Input Form: Contains input fields for various parameters such as area, bedrooms, bathrooms, stories, and amenities.
+        - Submit Button Event: Listens for form submission events and prevents the default form submission behavior.
+        - Form Data Collection: Collects form data using JavaScript and sends it to the backend API as JSON.
+        - Backend API Interaction: Sends a POST request to the backend API with the collected form data.
+        - Real-time Prediction Display: Displays the predicted price returned by the backend API without refreshing the page.
 
+   
