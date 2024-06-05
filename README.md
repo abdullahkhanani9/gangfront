@@ -37,3 +37,31 @@
         - uses stored sector from localStorage
         - displays account balance
         - uses JavaScript and HTML
+
+### Painting Project
+---
+- Created by Deva Sasikumar (devaSas1)
+- files concerning this feature: 2024-04-04-gallery.md, 2024-04-04-painter.md, src/gallery.js, src/painter.js
+    - 2024-04-04-gallery.md:
+        - displays a gallery of saved paintings
+        - includes a search function to filter paintings by username
+        - fetches painting data from the backend (GET request to /api/paint_api/getPainting/)
+        - uses JavaScript and HTML for dynamic content display
+    - 2024-04-04-painter.md:
+        - provides an interactive canvas for users to create and save paintings
+        - allows users to select colors, draw on the canvas, and download their artwork
+        - includes a feature to upload paintings to the backend (POST request to /api/paint_api/uploadPainting/)
+        - uses JavaScript and HTML for canvas interactions and painting management
+    - src/gallery.js:
+        - JavaScript code for fetching and displaying paintings in the gallery
+        - defines the endpoint for fetching paintings from the server
+        - processes and displays fetched paintings, including username attribution
+        - handles search functionality to filter displayed paintings by username
+    - src/painter.js:
+        - JavaScript code for handling canvas drawing functionality
+        - includes event listeners for mouse actions and color selection
+        - provides a function to download the canvas drawing as an image
+        - includes code to upload the painting to the backend with user ID
+        - handles file selection and preview for uploading images
+
+
